@@ -133,10 +133,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_bracketleft,		shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_bracketright,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_bracketright,	shifttag,	{ .i = 1 } },
-	{ MODKEY,			XK_Escape,		spawn,		SHCMD("prompt 'logout?' 'killall xinit'") }, //logout
+	//{ MODKEY,			XK_Escape,		spawn,		SHCMD("") },
 	//{ MODKEY|ShiftMask,		XK_Escape,		spawn,		SHCMD("") }, //too difficult to press
-	//{ MODKEY,			XK_BackSpace,		spawn,		SHCMD("") },
-	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,		SHCMD("prompt 'reboot?' reboot") }, //reboot
+	{ MODKEY,			XK_BackSpace,		spawn,		SHCMD("prompt 'logout?' 'killall xinit'") }, //logout
+	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,		SHCMD("prompt 'reboot?' 'reboot'") }, //reboot
 	{ MODKEY,			XK_q,			killclient,	{0} }, //quit the window
 	//{ MODKEY|ShiftMask,		XK_q,			quit,		{0} },
 	{ MODKEY,			XK_b,			zoom,		{0} }, //bring the selected window as main
@@ -170,7 +170,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY,			XK_x,		spawn,		SHCMD("displayselect") },
-	{ MODKEY|ShiftMask,		XK_x,		xrdb,		{.v = NULL } }, //refresh xresources
+	{ MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("xrdb $HOME/.config/Xresources") }, //refresh xresources
 	{ MODKEY,			XK_e,		spawn,		SHCMD("$TERMINAL -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("$TERMINAL -e $FILE") },
@@ -249,7 +249,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuumount") },
 	//{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
-	{ MODKEY,			XK_F5,		quit,		{0} }, //quits dwm
+	{ MODKEY,			XK_F5,		quit,		{0} }, // quits/refreshes dwm
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
 	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
