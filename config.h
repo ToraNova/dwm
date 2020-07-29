@@ -244,7 +244,7 @@ static Key keys[] = {
 	//------------------------------------------------------------------------------------------------------------------------------------------------------
 	//{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
 	//{ MODKEY,			XK_F1,		spawn,		SHCMD("mailsync") },
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("$TERMINAL -e less $HOME/github/luke/dwm/config.h") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("$TERMINAL -e less $HOME/github/impc/dwm/config.h") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("killall screenkey || screenkey &") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuumount") },
