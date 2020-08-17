@@ -162,6 +162,7 @@ struct Monitor {
 	Client *stack;
 	Monitor *next;
 	Window barwin;
+	Window gifwallpaper; //edit for livewallpaper branch
 	const Layout *lt[2];
 };
 
@@ -642,6 +643,8 @@ cleanupmon(Monitor *mon)
 	}
 	XUnmapWindow(dpy, mon->barwin);
 	XDestroyWindow(dpy, mon->barwin);
+	XUnmapWindow(dpy, mon->gifwallpaper);   //livewallpaper edit
+	XDestroyWindow(dpy, mon->gifwallpaper); //livewallpaper edit
 	free(mon);
 }
 
@@ -1205,6 +1208,21 @@ loadxrdb()
 void
 manage(Window w, XWindowAttributes *wa)
 {
+	//Edit 2020 Aug 17 based on:
+	//https://donqustix.github.io/unix/linux/dwm/2020/02/29/set-animated-gif-image-as-dwm-wallpaper.html
+	/* this code is to be inserted here */
+	char windownamegif[256];
+	gettextprop(w, XA_WM_NAME, windownamegif, sizeof windownamegif);
+	if (!strcmp(windownamegif, "gifwallpaper")) {
+		selmon->gifwallpaper = w;
+		XMoveResizeWindow(dpy, w, 0, 0, selmon->mw, selmon->mh);
+		XSetWindowBorderWidth(dpy, w, 0);
+		XLowerWindow(dpy, w);
+		XMapWindow(dpy, w);
+		return;
+	}
+	/* ... */
+
 	Client *c, *t = NULL, *term = NULL;
 	Window trans = None;
 	XWindowChanges wc;
