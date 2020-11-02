@@ -32,10 +32,13 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd3[] = {"sh", "actwinst" }; //see actwinst from examples
+// TODO: if you want to add more scratchpads, PLEASE ADD THEM IN THE RULES AS WELL! 2020-Nov03 4.02AM
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spcalc",      spcmd2},
+	{"spactw",   	spcmd3},
 };
 
 /* tagging */
@@ -52,6 +55,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	{ NULL,      "spactw",    NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
 };
 
 /* layout(s) */
@@ -184,7 +188,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_o,		spawn,		SHCMD("torwrap") }, //launch the transmission cli app
 	{ MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD("td-toggle") }, //start the torrent daemon
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 0} }, //spawn floating terminal
-	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_apostrophe,	togglescratch,	{.ui = 2} }, //spawn floating terminal as samedir
 	{ MODKEY,			XK_Return,	spawn,		SHCMD("$TERMINAL") }, //spawn new terminal
 	{ MODKEY|ShiftMask,		XK_Return,	spawn,		SHCMD("samedir") }, //spawn a terminal on the same directory as active window
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") }, //decrease volume
