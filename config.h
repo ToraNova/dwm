@@ -52,7 +52,8 @@ static const Rule rules[] = {
 	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
 	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
 	{ "St",       NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
+	{ NULL,       NULL,       "Event Tester",   	0,            0,           0,         1,        -1 },
+	{ NULL,       NULL,       "Emulator",		0,            1,           0,         0,        -1 }, //for android studio AVD
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
 	{ NULL,      "spactw",    NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
